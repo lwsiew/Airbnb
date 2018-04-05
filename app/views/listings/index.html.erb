@@ -1,0 +1,21 @@
+
+  		<% @listing.each do |listing| %>
+  		<div class="container-fluid">
+  		<div class="row">	
+  		<div class="col-lg-3"	>
+  			<p>
+  			<%= link_to listing.name, listing_path(listing) %><br/>
+  			<%= listing.description %><br/>
+  			<%= listing.country %>,
+  			<%= listing.state %>,
+  			<%= listing.city %><br/>
+  			Price : <%= listing.price %> <br/>
+  			<button type="button" class="btn btn-primary">Book now</button><br/>
+		  	</p>
+		</div>
+		</div>
+		</div>
+		<% end %>
+
+  	
+  

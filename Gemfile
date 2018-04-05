@@ -53,3 +53,13 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "clearance"
+
+gem "figaro"
+
+gem 'omniauth-facebook'
+
+gem 'omniauth'
+
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+
+gem 'kaminari'
