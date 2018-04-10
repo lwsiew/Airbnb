@@ -1,1 +1,6 @@
-<%= @user.email %>
+<% @user_listing.each do |x| %>
+	<%= x.name %><br/>
+	<%= button_to "Edit", edit_listing_path(x), method: :get %>
+	<%= button_to "Delete", listing_path(x), method: :delete %>
+<% end %>
+

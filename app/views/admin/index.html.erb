@@ -1,0 +1,8 @@
+<% @listing.each do |listing| %>
+	<%= link_to listing.name, listing_path(listing) %><br/>
+  		<%= listing.description %><br/>
+  		<%= listing.country %>
+  		<%= listing.state %>
+  		<%= listing.city %><br/>
+  		Price : <%= listing.price %> <br/>
+<% end %>
