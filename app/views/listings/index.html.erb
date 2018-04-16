@@ -1,20 +1,61 @@
+<button data-toggle="collapse" data-target="#demo">All</button>
+<div id="demo" class="collapse">
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Country</th>
+      <th scope="col">State</th>
+      <th scope="col">City</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+<tbody>
 <% @listing.each do |listing| %>
-  <div class="container-fluid">
-  	<div class="row">	
-  		<div class="col-lg-3"	>
-  			<p>
-  			<%= link_to listing.name, listing_path(listing) %><br/>
-  			<%= listing.description %><br/>
-  			<%= listing.country %>
-  			<%= listing.state %>
-  			<%= listing.city %><br/>
-  			Price : <%= listing.price %> <br/>
-  			<button type="button" class="btn btn-primary">Book now</button><br/>
-		  	</p>
-		  </div>
-		</div>
-	</div>
+<tr>
+         <td><%= link_to listing.name, listing_path(listing) %></td>
+         <td><%= listing.description %></td>
+         <td><%= listing.country %></td>
+         <td><%= listing.state %></td>
+         <td><%= listing.city %></td>
+         <td>Price : <%= listing.price %></td>
+         <td><%=button_to "Reserve Now", "/listings/#{listing.id}/reservations/new", method: :get %></td>
+</tr>
 <% end %>
+</tbody>
+</table>
+<%= paginate @listing %>
+</div>
+    
 
-  	
+<button data-toggle="collapse" data-target="#demo">Smoking allowed</button>
+<div id="demo" class="collapse">
+  <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Country</th>
+      <th scope="col">State</th>
+      <th scope="col">City</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+<tbody>
+<% @smoking.each do |listing| %>
+<tr>  
+         <td><%= link_to listing.name, listing_path(listing) %></td>
+         <td><%= listing.description %></td>
+         <td><%= listing.country %></td>
+         <td><%= listing.state %></td>
+         <td><%= listing.city %></td>
+         <td>Price : <%= listing.price %></td>
+         <td><%=button_to "Reserve Now", "/listings/#{listing.id}/reservations/new", method: :get %></td>
+</tr>
+<% end %>
+</tbody>
+</table>
+<%= paginate @listing %>
+</div>
   

@@ -1,0 +1,26 @@
+<%= form_for [@listing, @new_reservation] do |f| %>
+    
+
+<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+             <%= f.label :reservation_date %>
+                <div class='input-group date' id='datetimepicker1'>
+                    <%= f.text_field :reservation_date %>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    <%= f.submit %>
+
+<% end %>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+    </div>
+</div>

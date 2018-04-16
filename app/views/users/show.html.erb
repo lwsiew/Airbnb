@@ -1,6 +1,37 @@
+<h1>My Listings</h1>
 <% @user_listing.each do |x| %>
 	<%= x.name %><br/>
 	<%= button_to "Edit", edit_listing_path(x), method: :get %>
 	<%= button_to "Delete", listing_path(x), method: :delete %>
 <% end %>
+
+<br/>
+<h1>My Reservations</h1>
+	<% @user_reservation.each do |y|%>
+		<%= y.reservation_date %><br/>
+		<%= y.user_id %><br/>
+		<%= y.listing_id %><br/>
+	<% end %>
+
+<br/>
+<h1>My Listing Reservation</h1>
+<% @user_listing.each do |t| %>
+	<%=t.name %><br/>	
+		<% t.reservations.each do |m| %>
+			<%= m.reservation_date %><br/>
+		<% end %>
+<% end %>
+
+<br/>
+
+<%= image_tag current_user.avatar_url.to_s %>
+
+<%= form_for @user, :html => {:multipart => true} do |f| %>
+
+  <p>
+    <%= f.file_field :avatar %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+
 

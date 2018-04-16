@@ -5,16 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user = {}
-user['password'] = SecureRandom.hex(10)
+# user = {}
+# user['password'] = SecureRandom.hex(10)
 
-ActiveRecord::Base.transaction do
-  20.times do 
-    user['email'] = Faker::Internet.email
+# ActiveRecord::Base.transaction do
+#   20.times do 
+#     user['email'] = Faker::Internet.email
 
-    User.create(user)
-  end
-end 
+#     User.create(user)
+#   end
+# end 
 
 # Seed Listings
 listing = {}

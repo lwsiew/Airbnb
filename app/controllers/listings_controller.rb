@@ -2,7 +2,8 @@ class ListingsController < ApplicationController
 	before_action :check_user
 	before_action :check_admin
 	def index
-		@listing = Listing.all
+		@listing = Listing.order(:name).page(params[:page])
+		@smoking = @listing.where(smoking_allowed:true)
 	end
 
 	def show
@@ -11,7 +12,7 @@ class ListingsController < ApplicationController
 
 	def new
 		@new_list = current_user.listings.new
-	end
+	end	
 
 	def create
 		@new_list = current_user.listings.new(allowed_params)
@@ -29,10 +30,11 @@ class ListingsController < ApplicationController
 	def update
 		@listings = Listing.find(params[:id])
 			if @listings.update_attributes(allowed_params)
+			@listings.update(edit_params)
 				redirect_to "/users/#{current_user.id}"
 			else
 				render "new"
-			end
+			end		
 	end
 
 	def destroy
@@ -46,8 +48,12 @@ class ListingsController < ApplicationController
 		params.require(:listing).permit(:name, :property_type, :room_number, :bed_number, :guest_number, :country, :state, :city, :zipcode, :address, :price, :description, :user_id, :smoking_allowed)
 		end
 
-	def check_user
+	private
+		def edit_params
+		params.require(:listing).permit(:avatar)
+		end
 
+	def check_user
 		if !current_user
 			flash[:notice] = "Sorry, please sign in to continue!"
 			redirect_to sign_in_path

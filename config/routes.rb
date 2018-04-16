@@ -16,9 +16,12 @@ Rails.application.routes.draw do
 
 	get "/auth/:provider/callback" => "sessions#create_from_omniauth"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users, only: [:show]
+  resources :users, only: [:show, :create, :update]
 
-  resources :listings
+  resources :listings do
+  resources :reservations 
+  end
   # post "/admin/user/:id/listings" => "listing#admin_create", as: admin_listing
   resources :admin, only: [:index, :show] 
+
 end

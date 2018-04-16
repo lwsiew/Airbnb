@@ -1,2 +1,5 @@
-<h1><%= @listing.user_id %></h1>
+<%= image_tag @listing.avatar_url.to_s %>
+<h1><%= @listing.id %></h1>
+<%=button_to "Book Now", "/listings/#{@listing.id}/reservations/new", method: :get %>
+
 

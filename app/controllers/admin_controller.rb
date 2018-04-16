@@ -6,6 +6,7 @@ class AdminController < ApplicationController
 	end
 
 	def show
+		@listing = Listing.find(params[:id])
 	end
 
 	def check_user

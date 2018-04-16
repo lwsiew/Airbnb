@@ -43,3 +43,11 @@
 
 	<%= f.submit %>
 <% end %>
+
+<%= form_for @listings, :html => {:multipart => true} do |f| %>
+
+  <p>
+    <%= f.file_field :avatar %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

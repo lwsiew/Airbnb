@@ -1,5 +1,5 @@
 <% @listing.each do |listing| %>
-	<%= link_to listing.name, listing_path(listing) %><br/>
+	<%= link_to listing.name, admin_index_path(listing) %><br/>
   		<%= listing.description %><br/>
   		<%= listing.country %>
   		<%= listing.state %>
