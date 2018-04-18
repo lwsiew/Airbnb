@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'braintree/new'
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -22,6 +24,9 @@ Rails.application.routes.draw do
   resources :reservations 
   end
   # post "/admin/user/:id/listings" => "listing#admin_create", as: admin_listing
-  resources :admin, only: [:index, :show] 
+  resources :admin, only: [:index, :show]
+
+  resources :braintree, only: [:new] 
+  post 'braintree/checkout'
 
 end

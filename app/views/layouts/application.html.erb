@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application' %>
 </head>
 <body>
 
@@ -17,9 +21,9 @@
     <a class="nav-item nav-link active" href="/listings">Listings<span class="sr-only">(current)</span></a>
     <% if signed_in? %>
       <a class="nav-item nav-link" href="/listings/new">New Listing</a>
-      <%= button_to "User's Page", "/users/#{current_user.id}", method: :get %>
-      <a class="nav-item nav-link" data-method="get" href= "/users/:@user.id" >My Page</a>
+      <a class="nav-item nav-link" data-method="get" href= "/users/<%= current_user.id %>" >My Page</a>
       <a class="nav-item nav-link" data-method="delete" href="/sign_out">Sign Out</a>
+      <!-- <%= link_to "Sign Out", sign_out_path, method: :delete, class: "nav-item nav-link" %> -->
       <% else -%>
       <a class="nav-item nav-link" data-method="get" href="/sign_in">Sign In</a>
       <a class="nav-item nav-link" data-method="get" href="/auth/facebook">Sign In With Facebook</a>
@@ -40,8 +44,5 @@
 
   <%= yield %>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,26 +1,46 @@
+    <div class="container">
 <%= form_for [@listing, @new_reservation] do |f| %>
-    
-
-<div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-             <%= f.label :reservation_date %>
-                <div class='input-group date' id='datetimepicker1'>
-                    <%= f.text_field :reservation_date %>
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
+    <div class='col-md-5'>
+        <div class="form-group">
+                <%= f.label :check_in %>
+            <div class='input-group date' style="position: relative;">
+                <input type='text' class="form-control" id='datetimepicker6' name="reservation[check_in]" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
             </div>
         </div>
-    <%= f.submit %>
-
-<% end %>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
     </div>
+    <div class='col-md-5'>
+        <div class="form-group">
+                <%= f.label :check_out %>
+            <div class='input-group date' style="position: relative;">
+                <input type='text' class="form-control" id='datetimepicker7' name="reservation[check_out]" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+<%= f.submit %>
+<% end %> 
 </div>
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker6').datetimepicker({
+            format: 'YYYY-MM-DD',
+            useCurrent: false //Important! See issue #1075
+        });
+        $('#datetimepicker7').datetimepicker({
+            format: 'YYYY-MM-DD',
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#datetimepicker6").on("dp.change", function(e) {
+            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker7").on("dp.change", function(e) {
+            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+</script>

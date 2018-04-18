@@ -1,6 +1,10 @@
-<button data-toggle="collapse" data-target="#demo">All</button>
-<div id="demo" class="collapse">
+<div class="container">
+<button data-toggle="collapse" data-target="#all">All</button>
+<button data-toggle="collapse" data-target="#smoking">Smoking allowed</button>
+
+<div id="all" class="collapse">
 <table class="table">
+<%= paginate @listing %>
   <thead class="thead-dark">
     <tr>
       <th scope="col">Name</th>
@@ -25,13 +29,11 @@
 <% end %>
 </tbody>
 </table>
-<%= paginate @listing %>
 </div>
     
-
-<button data-toggle="collapse" data-target="#demo">Smoking allowed</button>
-<div id="demo" class="collapse">
+<div id="smoking" class="collapse">
   <table class="table">
+<%= paginate @smoking %>
   <thead class="thead-dark">
     <tr>
       <th scope="col">Name</th>
@@ -56,6 +58,6 @@
 <% end %>
 </tbody>
 </table>
-<%= paginate @listing %>
 </div>
-  
+
+</div>  

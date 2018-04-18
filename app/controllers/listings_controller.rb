@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
 	before_action :check_admin
 	def index
 		@listing = Listing.order(:name).page(params[:page])
-		@smoking = @listing.where(smoking_allowed:true)
+		@smoking = Listing.where(smoking_allowed:true).page(params[:page])
 	end
 
 	def show

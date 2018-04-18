@@ -20,7 +20,7 @@ class ReservationsController < ApplicationController
 		@new_reservation.user_id = current_user.id
 		@new_reservation.listing_id = @listing.id 
 			if @new_reservation.save
-				redirect_to "/users/#{current_user.id}"
+				redirect_to "/braintree/new"
 			else
 				render "new"
 			end		
@@ -28,6 +28,6 @@ class ReservationsController < ApplicationController
 
 	private
 		def allowed_params
-		params.require(:reservation).permit(:reservation_date, :user_id, :listing_id)
+		params.require(:reservation).permit(:check_in, :check_out, :user_id, :listing_id)
 		end
 end

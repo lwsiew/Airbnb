@@ -8,9 +8,10 @@
 <br/>
 <h1>My Reservations</h1>
 	<% @user_reservation.each do |y|%>
-		<%= y.reservation_date %><br/>
-		<%= y.user_id %><br/>
-		<%= y.listing_id %><br/>
+		Check in date : <%= y.check_in %><br/>
+		Check out date : <%= y.check_out %><br/>
+		By : <%= y.user_id %><br/>
+		For Listing : <%= y.listing_id %><br/>
 	<% end %>
 
 <br/>
@@ -18,7 +19,8 @@
 <% @user_listing.each do |t| %>
 	<%=t.name %><br/>	
 		<% t.reservations.each do |m| %>
-			<%= m.reservation_date %><br/>
+			<%= m.check_in %><br/>
+			<%= m.check_out %><br/>
 		<% end %>
 <% end %>
 
