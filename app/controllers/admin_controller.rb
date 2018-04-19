@@ -11,13 +11,13 @@ class AdminController < ApplicationController
 
 	def check_user
 		if !current_user
-		redirect_to root_path, notice: "No trespassing. Trespasser will be prostituted."
+		redirect_to root_path, notice: "No trespassing. "
 		end
 	end
 
 	def check_admin
 		if !current_user.admin
-		redirect_to root_path, notice: "No trespassing. Trespasser will be prostituted."
+		redirect_to root_path, notice: "No trespassing."
 		end
 	end
 end

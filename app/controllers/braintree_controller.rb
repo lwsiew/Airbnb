@@ -1,13 +1,16 @@
 class BraintreeController < ApplicationController
   def new
-  	@client_token = Braintree::ClientToken.generate
+  	@reservation = Reservation.find(params[:id])
+    @client_token = Braintree::ClientToken.generate
   end
 
   def checkout
+  @reservation = Reservation.find(params[:id])
+
   nonce_from_the_client = params[:checkout_form][:payment_method_nonce]
 
   result = Braintree::Transaction.sale(
-   :amount => "10.00", #this is currently hardcoded
+   :amount => @reservation.total_price,
    :payment_method_nonce => nonce_from_the_client,
    :options => {
       :submit_for_settlement => true

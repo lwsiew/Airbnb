@@ -1,8 +1,15 @@
 <% @listing.each do |listing| %>
-	<%= link_to listing.name, admin_index_path(listing) %><br/>
+	<br/><%= link_to listing.name, admin_index_path(listing) %><br/>
   		<%= listing.description %><br/>
   		<%= listing.country %>
   		<%= listing.state %>
   		<%= listing.city %><br/>
-  		Price : <%= listing.price %> <br/>
+  		Price : <%= listing.price %><br/>
+
+  		<%= form_for listing do |j| %>
+  			<%= j.label :verified%><br/>
+			<%= j.text_field :verified %><br/>
+			<%= j.submit %>
+  		<% end %> 
+ 
 <% end %>

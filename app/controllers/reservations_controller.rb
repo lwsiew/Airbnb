@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
 	
 	def index
-		@reservation = current_reservation
+		@reservation = Reservation.all
 		@listing = Listing.all
 		@reserved_listing = @listing.find_by(@reservation.id)
 	end
@@ -20,7 +20,7 @@ class ReservationsController < ApplicationController
 		@new_reservation.user_id = current_user.id
 		@new_reservation.listing_id = @listing.id 
 			if @new_reservation.save
-				redirect_to "/braintree/new"
+				redirect_to braintree_new_path(@new_reservation)
 			else
 				render "new"
 			end		

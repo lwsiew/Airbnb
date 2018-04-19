@@ -13,6 +13,8 @@
       <th scope="col">State</th>
       <th scope="col">City</th>
       <th scope="col">Price</th>
+      <th scope="col">Verified</th>
+      <th scope="col">Interested?</th>
     </tr>
   </thead>
 <tbody>
@@ -23,7 +25,8 @@
          <td><%= listing.country %></td>
          <td><%= listing.state %></td>
          <td><%= listing.city %></td>
-         <td>Price : <%= listing.price %></td>
+         <td><%= listing.price %></td>
+         <td><%= listing.verified %></td>
          <td><%=button_to "Reserve Now", "/listings/#{listing.id}/reservations/new", method: :get %></td>
 </tr>
 <% end %>
